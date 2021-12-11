@@ -23,7 +23,7 @@ exports.create = function(req, res) {
         Residente.create(new_residente, function(err, residente) {
             if (err)
             res.send(err);
-            res.json({error:false,message:"Empleado añadido satisfactoriamente.",data:residente});
+            res.json({error:false,message:"Residente añadido satisfactoriamente.",data:residente});
         });
     }
 };
@@ -45,7 +45,7 @@ exports.update = function(req, res) {
         Residente.update(req.params.id, new Residente(req.body), function(err, residente) {
             if (err)
             res.send(err);
-            res.json({ error:false, message: 'Empleado modificado satisfactoriamente.' });
+            res.json({ error:false, message: 'Residente modificado satisfactoriamente.' });
         });
     }
   
@@ -56,6 +56,6 @@ exports.delete = function(req, res) {
   Residente.delete( req.params.id, function(err, residente) {
     if (err)
     res.send(err);
-    res.json({ error:false, message: 'Employee successfully deleted' });
+    res.json({ error:false, message: 'Residente eliminado satisfactoriamente' });
   });
 };

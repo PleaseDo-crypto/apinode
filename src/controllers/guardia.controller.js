@@ -23,7 +23,7 @@ exports.create = function(req, res) {
         Guardia.create(new_Guardia, function(err, guardia) {
             if (err)
             res.send(err);
-            res.json({error:false,message:"Empleado añadido satisfactoriamente.",data:guardia});
+            res.json({error:false,message:"Guardia añadido satisfactoriamente.",data:guardia});
         });
     }
 };
@@ -45,7 +45,7 @@ exports.update = function(req, res) {
         Guardia.update(req.params.id, new Guardia(req.body), function(err, guardia) {
             if (err)
             res.send(err);
-            res.json({ error:false, message: 'Empleado modificado satisfactoriamente.' });
+            res.json({ error:false, message: 'Guardia modificado satisfactoriamente.' });
         });
     }
   
@@ -56,6 +56,6 @@ exports.delete = function(req, res) {
   Guardia.delete( req.params.id, function(err, guardia) {
     if (err)
     res.send(err);
-    res.json({ error:false, message: 'Guard successfully deleted' });
+    res.json({ error:false, message: 'Guardia eliminado satisfactoriamente.' });
   });
 };

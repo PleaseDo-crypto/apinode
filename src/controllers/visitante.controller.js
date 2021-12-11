@@ -23,7 +23,7 @@ exports.create = function(req, res) {
         Visitante.create(new_visitante, function(err, visitante) {
             if (err)
             res.send(err);
-            res.json({error:false,message:"Empleado añadido satisfactoriamente.",data:visitante});
+            res.json({error:false,message:"Visitante añadido satisfactoriamente.",data:visitante});
         });
     }
 };
@@ -45,7 +45,7 @@ exports.update = function(req, res) {
         Visitante.update(req.params.id, new Visitante(req.body), function(err, visitante) {
             if (err)
             res.send(err);
-            res.json({ error:false, message: 'Empleado modificado satisfactoriamente.' });
+            res.json({ error:false, message: 'Visitante modificado satisfactoriamente.' });
         });
     }
   
@@ -56,6 +56,6 @@ exports.delete = function(req, res) {
   Visitante.delete( req.params.id, function(err, visitante) {
     if (err)
     res.send(err);
-    res.json({ error:false, message: 'Employee successfully deleted' });
+    res.json({ error:false, message: 'Visitante eliminado satisfactoriamente.' });
   });
 };
