@@ -1,0 +1,386 @@
+swagger: "2.0"
+info:
+  description: "Documentación yml de las APIS desarrolladas en la materia GPDS, proyecto de Fraccionamiento."
+  version: "1.0.0"
+  title: "NODE.JS APIS"
+host: "nodeapiutvt.herokuapp.com"
+basePath: "/v1/api"
+tags:
+- name: "Visitantes"
+  description: "Personas que visitan el fraccionamiento"
+- name: "Residentes"
+  description: "Personas que viven en el fraccionamiento"
+- name: "Guardias"
+  description: "Dan acceso a los visitantes"
+schemes:
+- "https"
+- "http"
+paths:
+  /visitantes:
+    post:
+      tags:
+      - "Visitantes"
+      summary: "Insertar nuevo registro de visita"
+      description: ""
+      operationId: "addVisitante"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Visitante que necesita ser registrado en la Base de Datos"
+        required: true
+        schema:
+          $ref: "#"
+      responses:
+        "200":
+          description: "OK"   
+    put:
+      tags:
+      - "Visitantes"
+      summary: "Modifica un registro de visitante existente"
+      description: ""
+      operationId: "updateVisitante"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Visitante al que deben corregir sus datos"
+        required: true
+        schema:
+          $ref: "#"
+      responses:
+        "400":
+          description: "ID inválido"
+        "404":
+          description: "Visitante no encontrado"
+        "405":
+          description: "Validation exception"  
+  /visitante/{visitanteId}:
+    get:
+      tags:
+      - "Visitantes"
+      summary: "Busca a un visitante por su ID"
+      description: "Devuelve el detalle de un solo Visitante"
+      operationId: "getVisitanteById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "visitanteId"
+        in: "path"
+        description: "ID del Visitante a retornar"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Operación Realizada"
+
+        "400":
+          description: "ID inválido"
+        "404":
+          description: "Visitante no encontrado"
+    delete:
+      tags:
+      - "Visitantes"
+      summary: "Elimina un registro de Visitante"
+      description: ""
+      operationId: "deleteVisitante"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "visitanteId"
+        in: "path"
+        description: "Id del Visitante a borrar"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Id inválido"
+        "404":
+          description: "Visitante no"    
+  /residentes:
+    post:
+      tags:
+      - "Residentes"
+      summary: "Insertar nuevo registro de visita"
+      description: ""
+      operationId: "addResidente"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Visitante que necesita ser registrado en la Base de Datos"
+        required: true
+        schema:
+          $ref: "#"
+      responses:
+        "200":
+          description: "OK"         
+    put:
+      tags:
+      - "Residentes"
+      summary: "Modifica un registro de visitante existente"
+      description: ""
+      operationId: "updateResidente"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Visitante al que deben corregir sus datos"
+        required: true
+        schema:
+          $ref: "#"
+      responses:
+        "400":
+          description: "ID inválido"
+        "404":
+          description: "Visitante no encontrado"
+        "405":
+          description: "Validation exception"  
+  /residente/{residenteId}:
+    get:
+      tags:
+      - "Residentes"
+      summary: "Busca a un visitante por su ID"
+      description: "Devuelve el detalle de un solo Visitante"
+      operationId: "getResidenteById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "residenteId"
+        in: "path"
+        description: "ID del Visitante a retornar"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Operación Realizada"
+        "400":
+          description: "ID inválido"
+        "404":
+          description: "Visitante no encontrado"
+    delete:
+      tags:
+      - "Residentes"
+      summary: "Elimina un registro de Visitante"
+      description: ""
+      operationId: "deleteResidente"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "residenteId"
+        in: "path"
+        description: "Id del Visitante a borrar"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Id inválido"
+        "404":
+          description: "Visitante no"       
+  /guardias:
+    get:
+      tags:
+      - "Guardias"
+      summary: "Muestra todos los registros de guardias"
+      operationId: "getInventory"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "Operación realizada"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "integer"
+              format: "int32"
+    post:
+      tags:
+      - "Guardias"
+      summary: "Insertar nuevo guardia"
+      description: ""
+      operationId: "addGuardia"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Guardia que necesita ser registrado en la Base de Datos"
+        required: true
+        schema:
+          $ref: "#"
+      responses:
+        "200":
+          description: "OK"  
+    put:
+      tags:
+      - "Guardias"
+      summary: "Modifica un registro de guardia existente"
+      description: ""
+      operationId: "updateGuardia"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Guardia al que deben corregir sus datos"
+        required: true
+        schema:
+          $ref: "#"
+      responses:
+        "400":
+          description: "ID inválido"
+        "404":
+          description: "Visitante no encontrado"
+        "405":
+          description: "Validation exception"     
+  /guardia/{guardiaId}:
+    get:
+      tags:
+      - "Guardias"
+      summary: "Busca a un guardia por su ID"
+      description: "Devuelve el detalle de un solo Guardia"
+      operationId: "getGuardiaById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "guardiaId"
+        in: "path"
+        description: "ID del Guardia a retornar"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Operación Realizada"
+          schema:
+            $ref: "#"
+        "400":
+          description: "ID inválido"
+        "404":
+          description: "Guardia no encontrado"
+    delete:
+      tags:
+      - "Guardias"
+      summary: "Elimina un registro de Guardia"
+      description: ""
+      operationId: "deleteGuardia"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "guardiaId"
+        in: "path"
+        description: "Id del Guardia a borrar"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "400":
+          description: "Id inválido"
+        "404":
+          description: "Guardia no encontrado"  
+definitions:
+  Visitantes:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      nombre:
+        type: "string"
+      numero_ine:
+        type: "integer"
+      pacas_auto:
+        type: "string"
+      calle:
+        type: "string"
+      hora_entrada:
+        type: "string"
+      numero_casa:
+        type: "string"
+      cantidad_personas:
+        type: "integer"     
+  Residentes:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      calle:
+        type: "string"
+      numero_casa:
+        type: "integer"
+      numero_calle:
+        type: "string"
+      aceptar_visita:
+        type: "string"
+      created_at:
+        type: "string"
+        format: "date"
+      updated_at:
+        type: "string"
+        format: "date"      
+  Guardias:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      nombre_guardia:
+        type: "string"
+      turno:
+        type: "string"
+      numero_empleado:
+        type: "string"
+      created_at:
+        type: "string"
+        format: "date"
+      updated_at:
+        type: "string"
+        format: "date"
+
+      
+      
