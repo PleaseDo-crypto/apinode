@@ -22,12 +22,10 @@ app.get('/', (req, res) => {
 const visitanteRoutes = require('./src/routes/visitante.routes')
 const guardiaRoutes = require('./src/routes/guardia.routes')
 const residenteRoutes = require('./src/routes/residente.routes')
-const apidoc = require("./apidoc")
 
 app.use('/api/v1/visitantes', visitanteRoutes)
 app.use('/api/v1/guardias', guardiaRoutes)
 app.use('/api/v1/residentes', residenteRoutes)
-app.use('/api/v1/apidoc', apidoc)
 
 app.listen(port, () => {
   console.log(`El servidor está funcionando en el puerto ${port}`);
