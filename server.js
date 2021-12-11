@@ -15,7 +15,7 @@ app.use(bodyParser.json())
 
 // Ruta raíz
 app.get('/', (req, res) => {
-  res.send("Hello World");
+  res.send("Bienvenido a nuestra Api. Maldonado Barrientos Moisés - 221810654 / Quiroz Palma Alex Nail - 221810641 / Martinez Becerril Javier - 221810675");
 });
 
 // Rutas requeridas
